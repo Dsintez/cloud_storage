@@ -3,6 +3,11 @@ package handler;
 import java.io.*;
 import java.net.Socket;
 import java.net.SocketException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 
 public class ClientHandler implements Runnable {
     private Socket socket;
@@ -30,21 +35,21 @@ public class ClientHandler implements Runnable {
                 String message = in.readUTF();
                 messages = message.split(" ");
                 switch (messages[0]) {
-                    case "exit":
+                    case "./exit":
                         work = false;
                         System.out.printf("Клиент %s отключился(сам)%n", clientName);
                         break;
-                    case "download":
+                    case "./download":
                         download(messages[1]);
                         break;
-                    case "upload":
+                    case "./upload":
                         upload(messages[1]);
                         break;
-                    case "getListFiles":
+                    case "./getListFiles":
                         if (messages.length < 2) {
-                            getListFiles("/");
+                            getListFiles(Paths.get(homeDirectory.getPath()));
                         } else {
-                            getListFiles(messages[1]);
+                            getListFiles(Paths.get(homeDirectory.getPath() + "/" + messages[1]).normalize());
                         }
                         break;
                 }
@@ -56,13 +61,21 @@ public class ClientHandler implements Runnable {
         }
     }
 
-    private void getListFiles(String path) throws IOException {
-        File file = new File(homeDirectory, path);
+    private void getListFiles(Path path) throws IOException {
+        File file = path.toFile();
         if (file.isDirectory()) {
             File[] files = file.listFiles();
             out.writeInt(files.length);
             for (File file1 : files) {
-                out.writeUTF((file1.isFile()? "File " : "Directory ") + file1.getName());
+                out.writeUTF((file1.isFile()? "F" : "D"));
+                out.writeUTF(file1.getName());
+                if (file1.isDirectory()) {
+                    out.writeLong(-1L);
+                } else {
+                    out.writeLong(file1.length());
+                }
+                LocalDateTime dateTime = LocalDateTime.ofInstant(Files.getLastModifiedTime(Paths.get(file1.getPath())).toInstant(), ZoneOffset.ofHours(3));
+                out.writeUTF(dateTime.toString());
             }
         } else {
             out.writeInt(0);

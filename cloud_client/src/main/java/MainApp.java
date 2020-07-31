@@ -13,10 +13,9 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("fxml/MainWindow.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("fxml/mainWindow.fxml"));
         primaryStage.setTitle("Cloud_storage");
-        primaryStage.setScene(new Scene(root));
-        primaryStage.setResizable(false);
+        primaryStage.setScene(new Scene(root, 1200, 600));
         //Image icon = new Image(String.valueOf(getClass().getResource("*.png")));
         //primaryStage.getIcons().add(icon);
         primaryStage.show();
