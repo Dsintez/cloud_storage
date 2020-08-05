@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainWindow">
+   <MenuBar>
+      <Menu text="Файл">
+         <MenuItem text="Выход" onAction="#btnExit"/>
+      </Menu>
+      <Menu text="Соединение">
+         <MenuItem text="Переподключиться" onAction="#btnReconnect"/>
+      </Menu>
+   </MenuBar>
+
+   <HBox>
+      <Label alignment="CENTER" text="Локальная машина" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+      <Label alignment="CENTER" text="Сервер" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+   </HBox>
+   <HBox VBox.vgrow="ALWAYS">
+      <fx:include fx:id="clientPanel" source="panel.fxml" HBox.hgrow="ALWAYS"/>
+      <fx:include fx:id="serverPanel" source="panel.fxml" HBox.hgrow="ALWAYS"/>
+   </HBox>
+
+   <HBox spacing="5">
+      <Button maxWidth="Infinity" text="Отправить" HBox.hgrow="ALWAYS" />
+      <Button maxWidth="Infinity" text="Переместить" HBox.hgrow="ALWAYS" />
+      <Button maxWidth="Infinity" text="Загрузить" HBox.hgrow="ALWAYS" />
+      <Button maxWidth="Infinity" text="Удалить" HBox.hgrow="ALWAYS" />
+      <padding>
+         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+      </padding>
+   </HBox>
+</VBox>

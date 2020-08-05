@@ -1,7 +1,8 @@
 package IO;
 
 import java.io.*;
-import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FileUtility {
 
@@ -34,37 +35,18 @@ public class FileUtility {
         }
     }
 
-    public static void sendFile(Socket socket, File file) throws IOException {
-        InputStream is = new FileInputStream(file);
-        long size = file.length();
-        int count = (int) (size / 8192) / 10, readBuckets = 0;
-        // /==========/
-        try(DataOutputStream os = new DataOutputStream(socket.getOutputStream())) {
-            byte [] buffer = new byte[8192];
-            os.writeUTF(file.getName());
-            System.out.print("/");
-            while (is.available() > 0) {
-                int readBytes = is.read(buffer);
-                readBuckets++;
-                if (readBuckets % count == 0) {
-                    System.out.print("=");
-                }
-                os.write(buffer, 0, readBytes);
+    public static List<String> getListFiles(File homeDirectory, String path) {
+        File file = new File(homeDirectory, path);
+        ArrayList<String> list = new ArrayList();
+        if (file.isDirectory()) {
+            File[] files = file.listFiles();
+            for (File file1 : files) {
+                list.add((file1.isFile()? "File " : "Directory") + file1.getName());
             }
-            System.out.println("/");
+        } else {
+            System.out.println("Выбран файл");
         }
-    }
-
-
-    public static void main(String[] args) throws IOException {
-        // createFile("./common/1.txt");
-        // createDirectory("./common/dir1");
-//        long start = System.currentTimeMillis();
-//        move(new File("./common/dir1"), new File("./common/1.txt"));
-//        long end = System.currentTimeMillis();
-//        System.out.println("time: " + (end - start) + " ms.");
-        sendFile(new Socket("localhost", 8189),
-                new File("./common/1.txt"));
+        return list;
     }
 
 }
