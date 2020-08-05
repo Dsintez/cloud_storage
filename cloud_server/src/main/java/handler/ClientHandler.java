@@ -1,5 +1,7 @@
 package handler;
 
+import IO.FileUtility;
+
 import java.io.*;
 import java.net.Socket;
 import java.net.SocketException;
@@ -22,6 +24,7 @@ public class ClientHandler implements Runnable {
         this.socket = socket;
         this.clientName = clientName;
         this.homeDirectory = new File("cloud/server/" + clientName);
+        FileUtility.createDir(homeDirectory);
     }
 
     @Override
@@ -49,7 +52,7 @@ public class ClientHandler implements Runnable {
                         if (messages.length < 2) {
                             getListFiles(Paths.get(homeDirectory.getPath()));
                         } else {
-                            getListFiles(Paths.get(homeDirectory.getPath() + "/" + messages[1]).normalize());
+                            getListFiles(Paths.get(homeDirectory.getPath(), messages[1]).normalize());
                         }
                         break;
                 }
@@ -90,26 +93,33 @@ public class ClientHandler implements Runnable {
         if (!file.exists()) {
             file.createNewFile();
         }
+        long fileSize;
         try (FileOutputStream os = new FileOutputStream(file)) {
             byte[] buffer = new byte[defaultSizeBuffer];
-            while (in.available() > 0) {
+            fileSize = in.readLong();
+            long sizeCounter = fileSize;
+            while (sizeCounter != 0) {
                 int r = in.read(buffer);
                 os.write(buffer, 0, r);
+                sizeCounter -= r;
             }
         }
-        out.writeUTF("successful");
+        if (fileSize == file.length()) {
+            out.writeUTF("successful");
+        } else {
+            out.writeUTF("unsuccessful");
+        }
         System.out.printf("File %s uploaded!%n", fileName);
     }
 
     private void download(String fileName) throws IOException {
         File file = new File(homeDirectory, fileName);
         try (FileInputStream is = new FileInputStream(file)) {
-            out.writeUTF("send"); // the file is found
+            out.writeLong(file.length()); // the file is found
             byte[] buffer = new byte[defaultSizeBuffer];
             while (is.available() > 0) {
                 int r = is.read(buffer);
                 out.write(buffer, 0, r);
-
             }
         } catch (FileNotFoundException e) {
             out.writeUTF("the file is not found");

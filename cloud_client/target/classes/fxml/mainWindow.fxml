@@ -15,7 +15,8 @@
          <MenuItem text="Выход" onAction="#btnExit"/>
       </Menu>
       <Menu text="Соединение">
-         <MenuItem text="Переподключиться" onAction="#btnReconnect"/>
+         <MenuItem text="Подключиться" onAction="#btnReconnect"/>
+         <MenuItem text="Отключиться" onAction="#btnDisconnect"/>
       </Menu>
    </MenuBar>
 

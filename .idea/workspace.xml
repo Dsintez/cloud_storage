@@ -1,36 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="654d42a2-d6df-4e9c-9e14-5031b122f5e4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cloud_client/src/main/java/controllers/MainWindow.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cloud_client/src/main/java/controllers/PanelController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cloud_client/src/main/resources/fxml/panel.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cloud_client/target/classes/META-INF/cloud_client.kotlin_module" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cloud_client/target/classes/MainApp.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cloud_client/target/classes/controllers/MainWindow.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cloud_client/target/classes/controllers/PanelController$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cloud_client/target/classes/controllers/PanelController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cloud_client/target/classes/fxml/mainWindow.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cloud_client/target/classes/fxml/panel.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cloud_server/target/classes/Server.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cloud_server/target/classes/handler/ClientHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cloud_server/target/classes/handler/IMG_20200715_080901.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/NIO/FileInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/target/classes/IO/FileUtility.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/target/classes/IO/Server.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/target/classes/META-INF/common.kotlin_module" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/target/classes/NIO/FileInfo$FileType.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/target/classes/NIO/FileInfo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cloud_client/src/main/java/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud_client/src/main/java/MainApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cloud_client/src/main/resources/fxml/MainWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/cloud_client/src/main/resources/fxml/MainWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cloud_server/src/main/java/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud_server/src/main/java/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cloud_server/src/main/java/handler/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud_server/src/main/java/handler/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-    </list>
+    <list default="true" id="654d42a2-d6df-4e9c-9e14-5031b122f5e4" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -98,20 +69,7 @@
       <recent name="D:\Link\Documents\_GitProject\cloud_storage\cloud_client\target\classes" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainApp">
-    <configuration name="FileUtility" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="IO.FileUtility" />
-      <module name="common" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="IO.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.Server">
     <configuration name="MainApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="MainApp" />
       <module name="cloud_client" />
@@ -119,7 +77,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Server (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Server" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="Server" />
       <module name="cloud_server" />
       <method v="2">
@@ -139,11 +97,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.MainApp" />
+      <item itemvalue="Application.Server" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.MainApp" />
-        <item itemvalue="Application.Server (1)" />
-        <item itemvalue="Application.FileUtility" />
+        <item itemvalue="Application.Server" />
         <item itemvalue="Application.Server" />
       </list>
     </recent_temporary>
@@ -172,6 +133,7 @@
       <workItem from="1596004527287" duration="20347000" />
       <workItem from="1596038045464" duration="1129000" />
       <workItem from="1596192667944" duration="235000" />
+      <workItem from="1596631551313" duration="39000" />
     </task>
     <servers />
   </component>
@@ -192,6 +154,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="74" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1595700547291" />
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596631589341">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1596631589341" />
     <state x="526" y="215" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1595665151127">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -220,22 +186,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="503" y="116" key="Github.UntrackedFilesDialog/0.0.1536.824@0.0.1536.824" timestamp="1595666544003" />
-    <state width="1493" height="261" key="GridCell.Tab.0.bottom" timestamp="1596038010690">
+    <state width="1493" height="207" key="GridCell.Tab.0.bottom" timestamp="1596631794412">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1596038010690" />
-    <state width="1493" height="261" key="GridCell.Tab.0.center" timestamp="1596038010689">
+    <state width="1493" height="207" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1596631794412" />
+    <state width="1493" height="207" key="GridCell.Tab.0.center" timestamp="1596631794412">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1596038010689" />
-    <state width="1493" height="261" key="GridCell.Tab.0.left" timestamp="1596038010689">
+    <state width="1493" height="207" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1596631794412" />
+    <state width="1493" height="207" key="GridCell.Tab.0.left" timestamp="1596631794412">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1596038010689" />
-    <state width="1493" height="261" key="GridCell.Tab.0.right" timestamp="1596038010690">
+    <state width="1493" height="207" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1596631794412" />
+    <state width="1493" height="207" key="GridCell.Tab.0.right" timestamp="1596631794412">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1596038010690" />
+    <state width="1493" height="207" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1596631794412" />
     <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1596038010690">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -264,10 +230,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="134" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1595765418649" />
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1596192897771">
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1596631550885">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1596192897771" />
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1596631550885" />
     <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1596192904471">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

@@ -1,10 +1,12 @@
 package controllers;
 
+import IO.FileUtility;
 import NIO.FileInfo;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.VBox;
 
 import java.io.*;
@@ -90,18 +92,6 @@ public class MainWindow implements Initializable {
         }
     }
 
-    /*public void getListFilesServer() {
-        try {
-            out.writeUTF("getListFiles"); // Тут должна еще посылаться выбранная папка.
-            int countFiles = in.readInt();
-            for (int i = 0; i < countFiles; i++) {
-                //filesTable.getItems().add(in.readUTF());
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }*/
-
     public void btnExit(ActionEvent actionEvent) {
         Platform.exit();
     }
@@ -111,6 +101,11 @@ public class MainWindow implements Initializable {
     }
 
     private void connectToServer() {
+        try {
+            if (socket != null) socket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         clientPC.setListFilesForClient(homeDirectory);
         try {
             socket = new Socket(host, defaultPort);
@@ -118,41 +113,22 @@ public class MainWindow implements Initializable {
             dos = new DataOutputStream(socket.getOutputStream());
             dos.writeUTF(nick); // and password
             serverDirectory = dis.readUTF();
-            filesFromServer = getListFilesFromServer("/");
+            filesFromServer = serverPC.getListFilesFromServer(dis, dos);
             serverPC.setListFilesForServer(filesFromServer, serverDirectory);
+            serverPC.getDisksBox().getItems().add(nick);
+            serverPC.getDisksBox().getSelectionModel().select(0);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-    }
-
-    private List<FileInfo> getListFilesFromServer(String path) {
-        ArrayList<FileInfo> listFiles = new ArrayList<FileInfo>();
-        try {
-            dos.writeUTF("./getListFiles " + path);
-            FileInfo fileInfo;
-            int counter = dis.readInt();
-            for (int i = 0; i < counter; i++) {
-                fileInfo = new FileInfo();
-                String fileType = dis.readUTF();
-                if ("F".equals(fileType)) {
-                    fileInfo.setType(FileInfo.FileType.FILE);
-                } else if ("D".equals(fileType)) {
-                    fileInfo.setType(FileInfo.FileType.DIRECTORY);
-                }
-                fileInfo.setFileName(dis.readUTF());
-                fileInfo.setSize(dis.readLong());
-                fileInfo.setLastModified(LocalDateTime.parse(dis.readUTF()));
-                listFiles.add(fileInfo);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return listFiles;
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        TextInputDialog textInputDialog = new TextInputDialog();
+        textInputDialog.setTitle("Ник");
+        textInputDialog.setHeaderText("Введите ваше имя.");
+        textInputDialog.setContentText("Nick name: ");
+        nick = textInputDialog.showAndWait().get();
         homeDirectory = Paths.get("./cloud/client/" + nick);
         clientPC = (PanelController) clientPanel.getProperties().get("ctrl");
         clientPC.setServer(false);
@@ -165,4 +141,14 @@ public class MainWindow implements Initializable {
         }
         clientPC.getDisksBox().getSelectionModel().select(0);
     }
+
+    public void btnDisconnect(ActionEvent actionEvent) {
+        try {
+            dos.writeUTF("./exit");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }

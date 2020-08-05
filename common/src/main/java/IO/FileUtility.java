@@ -6,24 +6,31 @@ import java.util.List;
 
 public class FileUtility {
 
-    public static void createFile(String fileName) throws IOException {
-        File file = new File(fileName);
-        if (!file.exists()) {
+    public static void createFile(File file) throws IOException {
+        File parent = new File(file.getParent());
+        if (!parent.exists()) {
+            createDir(parent);
+        }
+        if (!file.exists() || file.isDirectory()) {
             file.createNewFile();
         }
     }
 
-    public static void createDirectory(String dirName) throws IOException {
-        File file = new File(dirName);
-        if (!file.exists()) {
+    public static void createDir(File file) {
+        File parent = new File(file.getParent());
+        if (!parent.exists()) {
+            createDir(parent);
+        }
+        if (!file.exists() || file.isFile()) {
             file.mkdir();
         }
     }
 
 
+
     public static void move(File dir, File file) throws IOException {
         String path = dir.getAbsolutePath() + "/" + file.getName();
-        createFile(path);
+        createFile(new File(path));
         InputStream is = new FileInputStream(file);
         try(OutputStream os = new FileOutputStream(new File(path))) {
             byte [] buffer = new byte[8192];
@@ -48,5 +55,6 @@ public class FileUtility {
         }
         return list;
     }
+
 
 }

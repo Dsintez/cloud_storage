@@ -12,6 +12,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="cloud_storage" target="8" />
       <module name="cloud_storage_08-master" target="8" />
     </bytecodeTargetLevel>
   </component>
